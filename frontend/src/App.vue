@@ -1,29 +1,27 @@
 <template>
     <div id="app">
+        <AppBar></AppBar>
         <router-view></router-view>
     </div>
 </template>
 
 <script>
     import OverviewPage from './pages/OverviewPage'
+    import AppBar from "./components/layout/AppBar";
 
     export default {
         name: 'app',
         components: {
-            OverviewPage
+            OverviewPage,
+            AppBar
         }
     }
 </script>
 
 <style lang="scss">
-    @import "static/sanitize.css";
-
     #app {
-        font-family: 'Avenir', Helvetica, Arial, sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        text-align: center;
-        color: #2c3e50;
-        margin-top: 60px;
+        width: 100%;
+        height: 100%;
+        font-family: "Open Sans", sans-serif;
     }
 </style>

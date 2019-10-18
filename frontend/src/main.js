@@ -2,6 +2,8 @@ import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from "vue-router";
 
+import "./static/sanitize.css"
+
 Vue.use(VueRouter);
 
 import OverviewPage from "./pages/OverviewPage";
