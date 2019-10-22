@@ -12,8 +12,6 @@
 </script>
 
 <style lang="scss" scoped>
-    @import "../../static/constants";
-
     #bar {
         background: $primary-color;
         height: 70px;

@@ -1,6 +1,3 @@
-$primary-color: #1b58ff;
-$accent-color: #ff4461;
-
 @mixin BoxShadow ($dp) {
   @if $dp==0 {
     box-shadow: none
