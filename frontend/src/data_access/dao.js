@@ -1,5 +1,5 @@
-import DevicesRepository from 'repositories/devices'
+import DevicesRepository from './repositories/devices'
 
-export const Repositories = {
+export const DAO = {
     devices: DevicesRepository
 };
