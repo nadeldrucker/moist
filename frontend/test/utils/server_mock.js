@@ -9,33 +9,33 @@ const API_URL = ROOT_URL + "/api";
 
 mockserver.start_mockserver({
     serverPort: PORT,
-    verbose: true
+    verbose: false
 }).then(() => {
+
+    const DATA = require('./test_data');
+    const DEVICES = DATA.DEVICES;
+
     client.mockAnyResponse([
         {
             "httpRequest": {
-                "path": "/some/path"
+                "method": "GET",
+                "path": `${API_URL}/devices`
             },
             "httpResponse": {
-                "body": "some_response_body"
+                "body": JSON.stringify(DEVICES)
             }
         },
 
         {
             "httpRequest": {
-                "path": "/some/path"
+                "method": "GET",
+                "path": `${API_URL}/devices/${DEVICES[0].id}`
             },
             "httpResponse": {
-                "body": "some_response_body"
+                "body": JSON.stringify(DEVICES[0])
             }
         }
-    ]).then(
-        function () {
-            console.log("expectation created");
-        },
-        function (error) {
-            console.log(error);
-        }
-    );
+
+    ]).then(() => console.debug("Created mock routes!"), () => console.warn("Failed to create mock routed!"));
 
 });
