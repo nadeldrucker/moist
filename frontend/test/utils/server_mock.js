@@ -4,16 +4,20 @@ const mockServerClient = require('mockserver-client').mockServerClient;
 const PORT = 8081;
 const client = mockServerClient("localhost", PORT);
 
-const ROOT_URL = "/";
-const API_URL = ROOT_URL + "/api";
+const API_URL = "/api";
 
 mockserver.start_mockserver({
     serverPort: PORT,
-    verbose: false
+    verbose: true
 }).then(() => {
 
     const DATA = require('./test_data');
     const DEVICES = DATA.DEVICES;
+
+    client.setDefaultHeaders([
+        {'name': 'Content-Type', 'values': ['application/json; charset=utf-8']},
+        {'name': 'Access-Control-Allow-Origin', 'values': ['*']}
+    ], []);
 
     client.mockAnyResponse([
         {
@@ -36,6 +40,6 @@ mockserver.start_mockserver({
             }
         }
 
-    ]).then(() => console.debug("Created mock routes!"), () => console.warn("Failed to create mock routed!"));
+    ]).then(() => console.debug("Created mock routes!"), () => console.warn("Failed to create mock routes!"));
 
 });
